@@ -1,0 +1,24 @@
+{
+  "name": "Brief-Horloge",
+  "version": "1.0.0",
+  "description": "Dans ce projet, vous allez utiliser ce que vous avez appris et le mettre en pratique dans une démo, en utilisant JavaScript et CSS pour créer une `horloge analogique` fonctionnelle.",
+  "main": "index.js",
+  "dependencies": {
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinJCMotived/Brief-Simplon-4-Horloge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinJCMotived/Brief-Simplon-4-Horloge/issues"
+  },
+  "homepage": "https://github.com/kevinJCMotived/Brief-Simplon-4-Horloge#readme"
+}
