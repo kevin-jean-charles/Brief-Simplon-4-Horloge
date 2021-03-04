@@ -9,38 +9,47 @@ let heureActuel = new Date();
 console.log(heureActuel); 
 
 //Stocker l'heure , minute , seconde  dans des varaiables
-let heure = heureActuel.getHours();
-let minute = heureActuel.getMinutes();
-let second = heureActuel.getSeconds();
+let heures = heureActuel.getHours();
+let minutes = heureActuel.getMinutes();
+let seconds = heureActuel.getSeconds();
 
 // Calculer de degré de mouvement de l'aiguille heure, de l'aiguille minute, de l'aiguille seconde
 // Hint : Tous les aiguilles doivent se déplacer chaque second selon un degré
 
 
-//Degre temps
-let degParSecond = 360/60;  //6° pas sec
-let degParMinute = 360/(60*60); //0.1° deg min
-let degParHeure = 360/(12*60*60); //0.083° deg/heure
+//Conversion en des minutes et heures en seconds
+let minutesEnSeconds = minutes * 60;
+let heuresEnSeconds =  heures * 3600;
 
-//Convertion en second
-let secondEnSecond = degParSecond*second;
-let minuteEnSecond = degParMinute*(minute*60) + (second/60);
-let heureEnSecond = degParHeure*(heure*3600) + degParMinute*(minute/60) + degParSecond*(second/3600);  
 
-AIGUILLESEC.style.transform = "rotate("+ secondEnSecond +"deg)";
-AIGUILLEMIN.style.transform = "rotate("+ minuteEnSecond +"deg)";
-AIGUILLEHR.style.transform = "rotate("+ heureEnSecond +"deg)";
+
+//Rotation en degre par second
+let degParSecond = 360/60;  //6° 
+let degParMinute = 360/(60*60);  //0.1°
+let degParHeure = 360/(12*60*60);  //0.083°
+
+
+//Valeur de la position des aiguilles
+let aiguilleSecond = seconds * degParSecond;
+let aiguilleMinute = minutesEnSeconds * degParMinute;
+let aiguilleHeure = heuresEnSeconds * degParHeure;
+
+
+AIGUILLESEC.style.transform = "rotate("+ aiguilleSecond +"deg)";
+AIGUILLEMIN.style.transform = "rotate("+ aiguilleMinute +"deg)";
+AIGUILLEHR.style.transform = "rotate("+ aiguilleHeure +"deg)";
+
   
-// Déplacer les aiguilles 
+//Déplacer les aiguilles 
 function demarrerLaMontre() {
-  secondEnSecond += degParSecond;
-  minuteEnSecond += degParMinute;
-  heureEnSecond += degParHeure
-  AIGUILLESEC.style.transform = "rotate("+ secondEnSecond +"deg)";
-  AIGUILLEMIN.style.transform = "rotate("+ minuteEnSecond +"deg)";
-  AIGUILLEHR.style.transform = "rotate("+ heureEnSecond +"deg)";
+  aiguilleSecond += degParSecond;
+  aiguilleMinute += degParMinute;
+  aiguilleHeure += degParHeure;
+  AIGUILLESEC.style.transform = "rotate("+ aiguilleSecond +"deg)";
+  AIGUILLEMIN.style.transform = "rotate("+ aiguilleMinute +"deg)";
+  AIGUILLEHR.style.transform = "rotate("+ aiguilleHeure +"deg)";
 }
 
 
-// Exercuter la fonction chaque second
+//Exercuter la fonction chaque second
 var interval = setInterval(demarrerLaMontre, 1000);
